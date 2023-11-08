@@ -53,8 +53,8 @@ def create_contacts(type_contact, amount_contacts):
             contacts.append(BaseContact(
                 fake.first_name(), fake.last_name(), fake.phone_number(), fake.email()))
         else:
-            contacts.append(BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(),
-                                            email=fake.email(), job=fake.job(), company=fake.company(), company_phone_number=fake.phone_number()))
+            contacts.append(BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(
+            ), email=fake.email(), job=fake.job(), company=fake.company(), company_phone_number=fake.phone_number()))
 
     for contact in contacts:
         contact.len_first_name_and_last_name = len(
