@@ -8,7 +8,8 @@ class BaseContact:
         self.phone_number = phone_number
         self.email = email
 
-        self._len_first_name_and_last_name = 0
+        self._len_first_name_and_last_name = len(
+            self.first_name) + len(self.last_name)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}, {self.phone_number}, {self.email}'
@@ -19,10 +20,6 @@ class BaseContact:
     @property
     def len_first_name_and_last_name(self):
         return self._len_first_name_and_last_name
-
-    @len_first_name_and_last_name.setter
-    def len_first_name_and_last_name(self, value):
-        self._len_first_name_and_last_name = value
 
 
 class BusinessContact(BaseContact):
@@ -48,8 +45,8 @@ def create_contacts(type_contact, amount_contacts):
     """
     contacts = []
     fake = Faker('pl_PL')
-    for i in range(1, amount_contacts):
-        if (type_contact == 1):
+    for i in range(0, amount_contacts):
+        if type_contact == 1:
             contacts.append(BaseContact(
                 fake.first_name(), fake.last_name(), fake.phone_number(), fake.email()))
         else:
@@ -57,11 +54,10 @@ def create_contacts(type_contact, amount_contacts):
             ), email=fake.email(), job=fake.job(), company=fake.company(), company_phone_number=fake.phone_number()))
 
     for contact in contacts:
-        contact.len_first_name_and_last_name = len(
-            contact.first_name) + len(contact.last_name)
         print(contact.len_first_name_and_last_name)
         print(contact.contact())
         print(contact)
 
 
-create_contacts(1, 15)
+if __name__ == "__main__":
+    create_contacts(1, 3)
