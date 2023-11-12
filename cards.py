@@ -45,7 +45,7 @@ def create_contacts(type_contact, amount_contacts):
     """
     contacts = []
     fake = Faker('pl_PL')
-    for i in range(0, amount_contacts):
+    for i in range(amount_contacts):
         if type_contact == 1:
             contacts.append(BaseContact(
                 fake.first_name(), fake.last_name(), fake.phone_number(), fake.email()))
